@@ -1,17 +1,6 @@
 const axios = require('axios');
 
 class ContributionMetadata {
-
-    /**
-     * Gets the web page response body as a string
-     * @private
-     * @param {string} link Link to your contribution page
-     * @return {string} response data which is a string of the entire web page
-     */
-    async getResponseBody(link) {
-        return (await axios.get(link)).data;
-    }
-
     /**
      * Gets how many points is associated with your Local Guide Profile
      * @public
@@ -144,6 +133,31 @@ class ContributionMetadata {
     }
 
     /**
+     * Gets all the metadata in one object
+     * @public
+     * @param {string} link Link to the contribution page
+     * @return {JSON} metadata
+     */
+    async getMetadata(link) {
+        let body = await this.getResponseBody(link);
+
+        return {
+            points: this.getPoints(body),
+            level: this.getLevel(body),
+            reviews: this.getReviews(body),
+            ratings: this.getRatings(body),
+            questions: this.getQuestions(body),
+            placesAdded: this.getPlacesAdded(body),
+            edits: this.getEdits(body),
+            facts: this.getFacts(body),
+            videos: this.getVideos(body),
+            QA: this.getQA(body),
+            roadsAdded: this.getRoadsAdded(body),
+            listsPublished: this.getPublishedLists(body)
+        }
+    }
+
+    /**
      * Gets the match result based on the pattern searching through the response body of the web page
      * @private
      * @param {RegExp} pattern Pattern used to find matches within the body
@@ -155,22 +169,14 @@ class ContributionMetadata {
         return matches.length > 0 ? matches[1] : "";
     }
 
-    async getMetadata(link) {
-        let body = await this.getResponseBody(link);
-        let points = this.getPoints(body);
-        let level = this.getLevel(body);
-        let reviews = this.getReviews(body);
-        let ratings = this.getRatings(body);
-        let questions = this.getQuestions(body);
-        let placesAdded = this.getPlacesAdded(body);
-        let edits = this.getEdits(body);
-        let facts = this.getFacts(body);
-        let videos = this.getVideos(body);
-        let QA = this.getQA(body);
-        let roads = this.getRoadsAdded(body);
-        let lists = this.getPublishedLists(body);
-        
-        return reviews;
+    /**
+     * Gets the web page response body as a string
+     * @private
+     * @param {string} link Link to your contribution page
+     * @return {string} response data which is a string of the entire web page
+     */
+    async getResponseBody(link) {
+        return (await axios.get(link)).data;
     }
 }
 
