@@ -6,25 +6,39 @@ const ContributionMetadata = require('../src/ContributionMetadata');
 describe('ContributionMetadata Class',  () => {
     let contributionMetadata;
 
-    describe('getPoints()', () => {
-        let points;
-        let parsedPoints;
+    describe('getMetadata()', () => {
+        let metadata;
 
         beforeEach(async () => {
             contributionMetadata = new ContributionMetadata();
             await contributionMetadata.init(process.env.CONTRIB_LINK);
-            points = contributionMetadata.getPoints();
-            parsedPoints = parseInt(points);
+            metadata = contributionMetadata.getMetadata();
         });
 
-        it('should natively be a string', async () => {
-            expect(points).to.be.a('string');
+        it('should have each attribute be a string', async () => {
+            for (let attr in metadata) {
+                if (metadata.hasOwnProperty(attr)) {
+                    expect(metadata[attr]).to.be.a('string');
+                }
+            }
         });
-        it('should natively be a string', async () => {
-            expect(parsedPoints).to.be.a('number');
+
+        it('each attribute should be able to parse into an Int', async () => {
+            for (let attr in metadata) {
+                if (metadata.hasOwnProperty(attr)) {
+                    let parseIntAttr = parseInt(metadata[attr]);
+                    expect(parseIntAttr).to.be.a('number');
+                }
+            }
         });
-        it('parsedInt should equal to or greater than zero', async () => {
-            expect(parsedPoints >= 0).to.equal(true);
+
+        it('parsedInt attribute should equal to or greater than zero', async () => {
+            for (let attr in metadata) {
+                if (metadata.hasOwnProperty(attr)) {
+                    let parseIntAttr = parseInt(metadata[attr]);
+                    expect(parseIntAttr >= 0).to.equal(true);
+                }
+            }
         });
     });
 });
