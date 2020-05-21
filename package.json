@@ -4,7 +4,7 @@
   "description": "(Unofficial) Get your google contribution metadata using this api!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/**/*.js"
   },
   "author": "Jin",
   "license": "ISC",
@@ -14,5 +14,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/BigIntJin/google-local-guides-api.git"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "mocha": "^7.1.2"
   }
 }
