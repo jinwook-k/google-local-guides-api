@@ -25,3 +25,5 @@ yarn-error.log*
 package-lock.json
 test
 .git
+README.md
+images
