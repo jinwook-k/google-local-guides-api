@@ -2,6 +2,12 @@
 This npm package will give you functionality to get your 
 contribution metadata from your google local guides profile. 
 
+This package will scrape the data on this modal for you:
+![example google local guides metadata modal](images/Example%20Page.png)
+
+_Note: there is no authentication when using this package because it'll scrape your public profile page,
+which is accessible to everyone._
+
 ## Quickstart
 Installation
 ```shell script
