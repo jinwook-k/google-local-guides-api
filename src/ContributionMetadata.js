@@ -130,7 +130,7 @@ class ContributionMetadata {
      * @public
      * @return {JSON} metadata
      */
-    async getMetadata() {
+    getMetadata() {
         return {
             points: this.getPoints(),
             level: this.getLevel(),
@@ -156,6 +156,7 @@ class ContributionMetadata {
      */
     getMatch(pattern) {
         let matches = pattern.exec(this.responseBody);
+        if (!matches) return null;
         return matches.length > 0 ? matches[1] : "";
     }
 
