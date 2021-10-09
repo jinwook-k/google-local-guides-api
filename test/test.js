@@ -14,7 +14,6 @@ describe('ContributionMetadata Class', () => {
 
             await contributionMetadata.init(process.env.CONTRIB_LINK);
             metadata = contributionMetadata.getMetadata();
-            console.log(metadata);
         });
 
         for (const reqAttr of ["points", 'level', 'reviews', 'ratings', 'questions', 'placesAdded', 'edits', 'facts', 'videos', 'qa', 'roadsAdded', 'listsPublished']) {
