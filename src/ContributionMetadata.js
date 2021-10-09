@@ -31,7 +31,7 @@ class ContributionMetadata {
      * @return {string} # of reviews
      */
     getReviews() {
-        let pattern = /(\d+) reviews/g;
+        let pattern = /(\d+) review[s]?/g;
         return this.getMatch(pattern);
     }
 
@@ -41,7 +41,7 @@ class ContributionMetadata {
      * @return {string} # of ratings
      */
     getRatings() {
-        let pattern = /(\d+) ratings/g;
+        let pattern = /(\d+) rating[s]?/g;
         return this.getMatch(pattern);
     }
 
@@ -51,7 +51,7 @@ class ContributionMetadata {
      * @return {string} # of questions
      */
     getQuestions() {
-        let pattern = /(\d+) answers/g;
+        let pattern = /(\d+) answer[s]?/g;
         return this.getMatch(pattern);
     }
 
@@ -61,7 +61,7 @@ class ContributionMetadata {
      * @return {string} # of places added
      */
     getPlacesAdded() {
-        let pattern = /(\d+) places added/g;
+        let pattern = /(\d+) place[s]? added/g;
         return this.getMatch(pattern);
     }
 
@@ -71,7 +71,7 @@ class ContributionMetadata {
      * @return {string} # of edits
      */
     getEdits() {
-        let pattern = /(\d+) edits/g;
+        let pattern = /(\d+) edit[s]?/g;
         return this.getMatch(pattern);
     }
 
@@ -81,7 +81,7 @@ class ContributionMetadata {
      * @return {string} # of facts
      */
     getFacts() {
-        let pattern = /(\d+) facts/g;
+        let pattern = /(\d+) fact[s]?/g;
         return this.getMatch(pattern);
     }
 
@@ -91,7 +91,7 @@ class ContributionMetadata {
      * @return {string} # of videos
      */
     getVideos() {
-        let pattern = /(\d+) videos/g;
+        let pattern = /(\d+) video[s]?/g;
         return this.getMatch(pattern);
     }
 
@@ -111,7 +111,7 @@ class ContributionMetadata {
      * @return {string} # of roads
      */
     getRoadsAdded() {
-        let pattern = /(\d+) roads added/g;
+        let pattern = /(\d+) road[s]? added/g;
         return this.getMatch(pattern);
     }
 
@@ -121,7 +121,7 @@ class ContributionMetadata {
      * @return {string} # of published lists
      */
     getPublishedLists() {
-        let pattern = /(\d+) published lists/g;
+        let pattern = /(\d+) published list[s]?/g;
         return this.getMatch(pattern);
     }
 
