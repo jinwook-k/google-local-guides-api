@@ -1,6 +1,6 @@
 {
   "name": "google-local-guides-api",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "(Unofficial) Get your google contribution metadata using this api!",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "Jin",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.22.0"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "dotenv": "^8.2.0",
-    "mocha": "^7.1.2"
+    "mocha": "^9.1.2"
   },
   "keywords": [
     "google contributions",

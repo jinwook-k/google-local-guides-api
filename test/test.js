@@ -1,44 +1,29 @@
 const expect = require('chai').expect;
 
-require('dotenv').config({path: "./.env"});
+require('dotenv').config({ path: "./.env" });
 const ContributionMetadata = require('../src/ContributionMetadata');
 
-describe('ContributionMetadata Class',  () => {
+describe('ContributionMetadata Class', () => {
     let contributionMetadata;
 
     describe('getMetadata()', () => {
         let metadata;
 
-        beforeEach(async () => {
+        before(async () => {
             contributionMetadata = new ContributionMetadata();
+
             await contributionMetadata.init(process.env.CONTRIB_LINK);
             metadata = contributionMetadata.getMetadata();
         });
 
-        it('should have each attribute be a string', async () => {
-            for (let attr in metadata) {
-                if (metadata.hasOwnProperty(attr)) {
-                    expect(metadata[attr]).to.be.a('string');
-                }
-            }
-        });
-
-        it('each attribute should be able to parse into an Int', async () => {
-            for (let attr in metadata) {
-                if (metadata.hasOwnProperty(attr)) {
-                    let parseIntAttr = parseInt(metadata[attr]);
-                    expect(parseIntAttr).to.be.a('number');
-                }
-            }
-        });
-
-        it('parsedInt attribute should equal to or greater than zero', async () => {
-            for (let attr in metadata) {
-                if (metadata.hasOwnProperty(attr)) {
-                    let parseIntAttr = parseInt(metadata[attr]);
-                    expect(parseIntAttr >= 0).to.equal(true);
-                }
-            }
-        });
+        for (const reqAttr of ["points", 'level', 'reviews', 'ratings', 'questions', 'placesAdded', 'edits', 'facts', 'videos', 'qa', 'roadsAdded', 'listsPublished']) {
+            it('metadata should have attribute ' + reqAttr, async () => {
+                expect(metadata[reqAttr]).to.not.be.null;
+                expect(metadata[reqAttr]).to.be.a('string');
+                let parseIntAttr = parseInt(metadata[reqAttr]);
+                expect(parseIntAttr).to.be.a('number');
+                expect(parseIntAttr >= 0).to.equal(true);
+            })
+        }
     });
 });
