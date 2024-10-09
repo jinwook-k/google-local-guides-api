@@ -1,16 +1,5 @@
 const axios = require("axios");
 
-/**
- * removed the published lists as those no longer count
- * added some new contribution categories
- * renamed "questions" to "answers"
- * parse number helper function added
- * add star after each of s- so regardless if singular (for 1) or plural - it will handle
- * ^we found this out by console.log the responseBody and test it on regex101.com 
- * updated regex to handle commas as noticed first digit cutting off when comma present
- */
-
-// note too: regex is limited to english version of google maps as it uses english words to match
 
 class ContributionMetadata {
   async init(link) {
